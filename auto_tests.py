@@ -8,30 +8,30 @@ from config.config import *
 
 
 class TestLoginPage:
-    def test_pass_onboarding(self, driver):
-        notification_permission_not_allow_el = driver.find_element(
-            by=AppiumBy.ID,
-            value='com.android.permissioncontroller:id/permission_deny_button'
-        )
-        notification_permission_not_allow_el.click()
-
-        onboarding1_got_it_btn = driver.find_element(
-            by=AppiumBy.XPATH,
-            value='//android.widget.Button[@content-desc="Got it"]'
-        )
-        onboarding1_got_it_btn.click()
-
-        onboarding2_let_try_btn = driver.find_element(
-            by=AppiumBy.XPATH,
-            value="""//android.widget.Button[@content-desc="Let's try"]"""
-        )
-        onboarding2_let_try_btn.click()
-
-        onboarding3_sheeesh_btn = driver.find_element(
-            by=AppiumBy.XPATH,
-            value='//android.widget.Button[@content-desc="Sheeesh!"]'
-        )
-        onboarding3_sheeesh_btn.click()
+    # def test_pass_onboarding(self, driver):
+    #     notification_permission_not_allow_el = driver.find_element(
+    #         by=AppiumBy.ID,
+    #         value='com.android.permissioncontroller:id/permission_deny_button'
+    #     )
+    #     notification_permission_not_allow_el.click()
+    #
+    #     onboarding1_got_it_btn = driver.find_element(
+    #         by=AppiumBy.XPATH,
+    #         value='//android.widget.Button[@content-desc="Got it"]'
+    #     )
+    #     onboarding1_got_it_btn.click()
+    #
+    #     onboarding2_let_try_btn = driver.find_element(
+    #         by=AppiumBy.XPATH,
+    #         value="""//android.widget.Button[@content-desc="Let's try"]"""
+    #     )
+    #     onboarding2_let_try_btn.click()
+    #
+    #     onboarding3_sheeesh_btn = driver.find_element(
+    #         by=AppiumBy.XPATH,
+    #         value='//android.widget.Button[@content-desc="Sheeesh!"]'
+    #     )
+    #     onboarding3_sheeesh_btn.click()
 
     def test_user_can_go_to_privacy_policy(self, driver):
         privacy_policy_link = driver.find_element(
@@ -44,6 +44,32 @@ class TestLoginPage:
             value='//android.widget.Button[@content-desc="Back"]'
         )
         privacy_policy_back_btn.click()
+
+    def test_user_can_go_to_terms_conditions(self, driver):
+        terms_conditions_link = driver.find_element(
+            by=AppiumBy.XPATH,
+            value='//android.widget.Button[@content-desc="Terms & Conditions"]'
+        )
+        terms_conditions_link.click()
+        terms_conditions_back_btn = driver.find_element(
+            by=AppiumBy.XPATH,
+            value='//android.widget.Button[@content-desc="Back"]'
+        )
+        terms_conditions_back_btn.click()
+
+    def test_user_can_go_to_how_to_get_username_popup(self, driver):
+        how_to_get_username_icon = driver.find_element(
+            by=AppiumBy.XPATH,
+            value='//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android.'
+                  'widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.'
+                  'widget.ImageView/android.view.View/android.widget.ImageView'
+        )
+        how_to_get_username_icon.click()
+        close_how_to_get_username_btn = driver.find_element(
+            by=AppiumBy.XPATH,
+            value='//android.widget.Button[@content-desc="Close it"]'
+        )
+        close_how_to_get_username_btn.click()
 
     def test_login_flow(self, driver):
         login_text = driver.find_element(
@@ -83,6 +109,7 @@ class TestLoginPage:
         )
         log_in_btn.click()
 
+    def test_user_can_view_instructions(self, driver):
         for i in range(5):
             instructions_got_it_btn = driver.find_element(
                 by=AppiumBy.XPATH,
