@@ -8,30 +8,6 @@ from config.config import *
 
 
 class TestLoginPage:
-    # def test_pass_onboarding(self, driver):
-    #     notification_permission_not_allow_el = driver.find_element(
-    #         by=AppiumBy.ID,
-    #         value='com.android.permissioncontroller:id/permission_deny_button'
-    #     )
-    #     notification_permission_not_allow_el.click()
-    #
-    #     onboarding1_got_it_btn = driver.find_element(
-    #         by=AppiumBy.XPATH,
-    #         value='//android.widget.Button[@content-desc="Got it"]'
-    #     )
-    #     onboarding1_got_it_btn.click()
-    #
-    #     onboarding2_let_try_btn = driver.find_element(
-    #         by=AppiumBy.XPATH,
-    #         value="""//android.widget.Button[@content-desc="Let's try"]"""
-    #     )
-    #     onboarding2_let_try_btn.click()
-    #
-    #     onboarding3_sheeesh_btn = driver.find_element(
-    #         by=AppiumBy.XPATH,
-    #         value='//android.widget.Button[@content-desc="Sheeesh!"]'
-    #     )
-    #     onboarding3_sheeesh_btn.click()
 
     def test_user_can_go_to_privacy_policy(self, driver):
         privacy_policy_link = driver.find_element(
@@ -116,6 +92,36 @@ class TestLoginPage:
                 value='//android.widget.Button[@content-desc="Got it"]'
             )
             instructions_got_it_btn.click()
+
+    def test_user_can_go_to_profile(self, driver):
+        profile_tab = driver.find_element(
+            by=AppiumBy.XPATH,
+            value='//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/'
+                  'android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/'
+                  'android.view.View[2]/android.widget.ImageView[5]'
+        )
+        profile_tab.click()
+        profile_title = (driver.find_element(
+            by=AppiumBy.XPATH,
+            value='//android.view.View[@content-desc="Profile"]')
+        ).get_attribute('content-desc')
+        print(profile_title)
+        assert profile_title == 'Profile', f"The profile page doesn't open"
+
+    def test_user_can_go_to_deposit(self, driver):
+        deposit_btn = driver.find_element(
+            by=AppiumBy.XPATH,
+            value='//android.widget.ImageView[@content-desc="Deposit"]'
+        )
+        deposit_btn.click()
+
+    def test_user_can_choose_coins(self, driver):
+        coins_pack = driver.find_element(
+            by=AppiumBy.ACCESSIBILITY_ID,
+            value="100 4.89 $"
+        )
+        coins_pack.click()
+        time.sleep(5)
 
     #
     # def test_tap_forgot_password(self, driver):
