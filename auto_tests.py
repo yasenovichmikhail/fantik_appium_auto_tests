@@ -105,7 +105,6 @@ class TestLoginPage:
             by=AppiumBy.XPATH,
             value='//android.view.View[@content-desc="Profile"]')
         ).get_attribute('content-desc')
-        print(profile_title)
         assert profile_title == 'Profile', f"The profile page doesn't open"
 
     def test_user_can_go_to_deposit(self, driver):
@@ -115,13 +114,30 @@ class TestLoginPage:
         )
         deposit_btn.click()
 
-    def test_user_can_choose_coins(self, driver):
+    def test_user_can_buy_coins(self, driver):
         coins_pack = driver.find_element(
-            by=AppiumBy.ACCESSIBILITY_ID,
-            value="100 4.89 $"
+            by=AppiumBy.XPATH,
+            value='//android.widget.ImageView[3]'
         )
         coins_pack.click()
+        buy_coins_btn = driver.find_element(
+            by=AppiumBy.XPATH,
+            value='//android.widget.Button[@content-desc="Buy 500 coins"]'
+        )
+        buy_coins_btn.click()
+        tap1_buy_btn = driver.find_element(
+            by=AppiumBy.XPATH,
+            value='//android.widget.Button[@resource-id="com.android.vending:id/0_resource_name_obfuscated"]'
+        )
+        tap1_buy_btn.click()
         time.sleep(5)
+        # tap1_buy_btn = driver.find_element(
+        #     by=AppiumBy.XPATH,
+        #     value='//android.widget.Button[@resource-id="com.android.vending:id/0_resource_name_obfuscated"]'
+        # )
+        # tap1_buy_btn = tap1_buy_btn.get_attribute('text')
+        # print(tap1_buy_btn)
+        # time.sleep(7)
 
     #
     # def test_tap_forgot_password(self, driver):
