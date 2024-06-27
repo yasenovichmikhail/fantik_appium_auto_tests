@@ -93,7 +93,33 @@ class TestLoginPage:
             )
             instructions_got_it_btn.click()
 
-    def test_user_can_go_to_profile(self, driver):
+    # def test_user_can_go_to_boost_section(self, driver):
+    #     boost_tab = driver.find_element(
+    #         by=AppiumBy.XPATH,
+    #         value='//android.widget.ImageView[2]'
+    #     )
+    #     boost_tab.click()
+    #     boost_tab_title = driver.find_element(
+    #         by=AppiumBy.ACCESSIBILITY_ID,
+    #         value='Boost'
+    #     )
+    #     boost_title = boost_tab_title.get_attribute('content-desc')
+    #     assert boost_title == 'Boost', f"Boost title doesn't match"
+
+    # def test_user_can_go_to_download_section(self, driver):
+    #     download_tab = driver.find_element(
+    #         by=AppiumBy.XPATH,
+    #         value='//android.widget.ImageView[4]'
+    #     )
+    #     download_tab.click()
+    #     download_tab_title = driver.find_element(
+    #         by=AppiumBy.ACCESSIBILITY_ID,
+    #         value='Download'
+    #     )
+    #     download_title = download_tab_title.get_attribute('content-desc')
+    #     assert download_title == 'Download', f"Download title doesn't match"
+
+    def test_user_can_go_to_profile_section(self, driver):
         profile_tab = driver.find_element(
             by=AppiumBy.XPATH,
             value='//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/'
@@ -101,36 +127,50 @@ class TestLoginPage:
                   'android.view.View[2]/android.widget.ImageView[5]'
         )
         profile_tab.click()
-        profile_title = (driver.find_element(
+        profile_tab_title = driver.find_element(
             by=AppiumBy.XPATH,
-            value='//android.view.View[@content-desc="Profile"]')
-        ).get_attribute('content-desc')
-        assert profile_title == 'Profile', f"The profile page doesn't open"
-
-    def test_user_can_go_to_deposit(self, driver):
-        deposit_btn = driver.find_element(
-            by=AppiumBy.XPATH,
-            value='//android.widget.ImageView[@content-desc="Deposit"]'
+            value='//android.view.View[@content-desc="Profile"]'
         )
-        deposit_btn.click()
-
-    def test_user_can_buy_coins(self, driver):
-        coins_pack = driver.find_element(
-            by=AppiumBy.XPATH,
-            value='//android.widget.ImageView[3]'
-        )
-        coins_pack.click()
-        buy_coins_btn = driver.find_element(
-            by=AppiumBy.XPATH,
-            value='//android.widget.Button[@content-desc="Buy 500 coins"]'
-        )
-        buy_coins_btn.click()
-        tap1_buy_btn = driver.find_element(
-            by=AppiumBy.XPATH,
-            value='//android.widget.Button[@resource-id="com.android.vending:id/0_resource_name_obfuscated"]'
-        )
-        tap1_buy_btn.click()
+        profile_title = profile_tab_title.get_attribute('content-desc')
+        assert profile_title == 'Profile', f"Profile title doesn't match"
         time.sleep(5)
+
+    # def test_user_can_go_to_tasks_section(self, driver):
+    #     tasks_tab = driver.find_element(
+    #         by=AppiumBy.XPATH,
+    #         value='//android.widget.ImageView[1]'
+    #     )
+    #     tasks_tab.click()
+    #     tasks_tab_title = driver.find_element(
+    #         by=AppiumBy.ACCESSIBILITY_ID,
+    #         value='Tasks'
+    #     )
+    #     tasks_title = tasks_tab_title.get_attribute('content-desc')
+    #     assert tasks_title == 'Tasks', f"Tasks title doesn't match"
+    # def test_user_can_go_to_deposit(self, driver):
+    #     deposit_btn = driver.find_element(
+    #         by=AppiumBy.XPATH,
+    #         value='//android.widget.ImageView[@content-desc="Deposit"]'
+    #     )
+    #     deposit_btn.click()
+    #
+    # def test_user_can_buy_coins(self, driver):
+    #     coins_pack = driver.find_element(
+    #         by=AppiumBy.XPATH,
+    #         value='//android.widget.ImageView[3]'
+    #     )
+    #     coins_pack.click()
+    #     buy_coins_btn = driver.find_element(
+    #         by=AppiumBy.ACCESSIBILITY_ID,
+    #         value='//android.widget.Button[@content-desc="Buy 500 coins"]'
+    #     )
+    #     buy_coins_btn.click()
+        # tap1_buy_btn = driver.find_element(
+        #     by=AppiumBy.XPATH,
+        #     value='//android.widget.Button[@resource-id="com.android.vending:id/0_resource_name_obfuscated"]'
+        # )
+        # tap1_buy_btn.click()
+        # time.sleep(5)
         # tap1_buy_btn = driver.find_element(
         #     by=AppiumBy.XPATH,
         #     value='//android.widget.Button[@resource-id="com.android.vending:id/0_resource_name_obfuscated"]'
